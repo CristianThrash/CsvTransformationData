@@ -123,9 +123,15 @@ for linea in reader:
             kIdEvento=auxRow[0]
 
     #Insertar rompimientos
-    sqlinsert = "INSERT INTO competidor_evento values(%s,%s,%s,%s);"
-    cur.execute(sqlinsert, (kIdCompetidor,kIdEvento,int(linea[9]),linea[14]))
-    conn.commit()
+    auxRow=None;
+    sqlquery = "SELECT * FROM competidor_evento WHERE k_idcompetidor=%s and k_idevento=%s and v_anio=%s"
+    cur.execute(sqlquery, (kIdCompetidor,kIdEvento,int(linea[9])))
+    auxRow = cur.fetchone()
+    
+    if(auxRow==None):
+        sqlinsert = "INSERT INTO competidor_evento values(%s,%s,%s,%s);"
+	cur.execute(sqlinsert, (kIdCompetidor,kIdEvento,int(linea[9]),linea[14]))
+	conn.commit()
     
 cur.close()
 conn.close()

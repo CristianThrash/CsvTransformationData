@@ -64,7 +64,7 @@ CREATE TABLE Competidor_evento
 (
 	k_idcompetidor serial NOT NULL,
 	k_idevento serial NOT NULL,
-	"v_año" numeric(4) NOT NULL,
+	v_anio numeric(4) NOT NULL,
 	o_medalla varchar(10) NOT NULL
 )
 ;
@@ -106,7 +106,7 @@ ALTER TABLE Competidor ADD CONSTRAINT PK_Competidor
 ;
 
 ALTER TABLE Competidor_evento ADD CONSTRAINT PK_Competidor_evento
-	PRIMARY KEY (k_idcompetidor,k_idevento,"v_año")
+	PRIMARY KEY (k_idcompetidor,k_idevento,v_anio)
 ;
 
 ALTER TABLE Deporte ADD CONSTRAINT PK_Deporte
