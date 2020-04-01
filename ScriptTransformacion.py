@@ -7,8 +7,8 @@ archivo = open("athlete_events.csv")
 reader = csv.reader(archivo,delimiter=',')
 
 conn = psycopg2.connect(user = "postgres",
-                              password = "postgres",
-                              host = "localhost",
+                              password = "estudiantes123",
+                              host = "10.20.251.157",
                               port = "5432",
                               database = "olimpicos")
   
@@ -130,8 +130,8 @@ for linea in reader:
     
     if(auxRow==None):
         sqlinsert = "INSERT INTO competidor_evento values(%s,%s,%s,%s);"
-	cur.execute(sqlinsert, (kIdCompetidor,kIdEvento,int(linea[9]),linea[14]))
-	conn.commit()
+        cur.execute(sqlinsert, (kIdCompetidor,kIdEvento,int(linea[9]),linea[14]))
+        conn.commit()
     
 cur.close()
 conn.close()
