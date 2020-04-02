@@ -7,7 +7,7 @@ archivo = open("athlete_events.csv")
 reader = csv.reader(archivo,delimiter=',')
 
 conn = psycopg2.connect(user = "postgres",
-                        password = "postgres",
+                        password = "oracle2020",
                         host = "localhost",
                         port = "5432",
                         database = "cubo_olimpicos")
@@ -111,7 +111,6 @@ for linea in reader:
         if(auxRow!=None):
             auxId=auxRow[4]
             idTiempo=auxRow[4]
-    print(idTiempo,idDeporte,idLugar,idDeportista)
     
     #Insertar ganadores
     sqlinsert = "INSERT INTO Ganadores values(%s,%s,%s,%s,%s,%s);"
